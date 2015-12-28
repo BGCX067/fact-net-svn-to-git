@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC '-//Hibernate/Hibernate Configuration DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd'>
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property> <!-- Driver do BD -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/test</property><!-- Nome da Base -->
+		<property name="connection.username">root</property><!-- Usuario da Base -->
+		<property name="connection.password">root</property><!-- Senha da Base -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property> <!-- Dialeto Utilizado -->
+		<property name="connection.pool_size">10</property>  
+ 	    <property name="show_sql">true</property> 
+      	<!--property name="hbm2ddl.auto">create</property>
+      	<property name="generateDdl">true</property-->
+      	
+      	<mapping class="br.org.missaoart.gerenciador.dao.membros.entinty.PessoaEntinty"/>
+      	<mapping class="br.org.missaoart.gerenciador.dao.membros.entinty.EnderecoEntinty"/> 
+      	<mapping class="br.org.missaoart.gerenciador.dao.carta.entinty.StatusCartaEntinty"/> 
+      	<mapping class="br.org.missaoart.gerenciador.dao.carta.entinty.ModeloCartaEntinty"/>
+      	<mapping class="br.org.missaoart.gerenciador.dao.carta.entinty.CartaEntinty"/> 
+	</session-factory>
+</hibernate-configuration>
+
+

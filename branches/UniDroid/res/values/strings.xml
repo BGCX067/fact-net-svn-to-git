@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UniDroid</string>
+    <string name="action_settings">Settings</string>
+    <string name="titulo_app">UniDroid</string>
+    <string name="texto_direitos">Todos os direitos reservados</string>
+    <string name="descLogo">Logo da Faculdade</string>
+    <string name="company">\u00A9 Big Dog Software</string>
+    <string name="lblMatricula">Matricula</string>
+    <string name="lblSenha">Senha</string>
+    <string name="lblConfirm">Confirm.</string>
+    <string name="btnTxtLogin">Login</string>
+    <string name="btnTxtRegistrar">Registrar</string>
+    <string name="senha_de_confirmacao_incorreta">Senha de confirmação incorreta</string>
+    <string name="preencha_todos_os_campos">Preencha todos os campos</string>
+    <string name="sem_conectividade">Sem conectividade</string>
+    <string name="nao_houve_resposta_do_servidor">Não houve resposta do servidor</string>
+    <string name="title_activity_tela_principal">TelaPrincipalActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

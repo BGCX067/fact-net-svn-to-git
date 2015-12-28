@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>uninove.factnet</groupId>
+  <artifactId>factnet-parent</artifactId>
+  <packaging>pom</packaging>
+  <version>0.1</version>
+  <name>FactNet Pom Pos Aula </name>
+  <url>http://maven.apache.org</url>
+  
+  <modules>
+		<module>factnet-core</module> 
+		<module>factnet-services</module>
+		<module>factnet-auth</module>
+		<module>factnet-web</module>
+		<module>factnet-desk</module>
+  </modules>
+  
+  <!--+
+	  | ATENÇÂO: Este arquivo é diferente dos demais POMs, por favor cuidado ao altera-lo porque ele é mais complexo.
+	  | Dependências devem ser incluidas entre a tag <dependencies> </dependencies>
+	  | Exemplo de Dependencia: 
+	  |
+	  |	<dependency>
+	  |		<groupId>NOME DO GRUPO DA DEPENDENCIA</groupId>
+	  |		<artifactId>NOME DA DEPENDENCIA</artifactId>
+	  |		<version>NUMERO DA VERSAO</version> 
+	  |		<scope>ESCOPO DA DEPENDENCIA</scope> - obs: este item é opcional, mas na duvida retira-lo
+	  |	</dependency>
+	  |
+	  | OBS: Toda dependencia inserida aqui, com exceção dos modulos factnet, deve ser retirado do site oficial do repositorio maven:
+	  |      http://search.maven.org/#browse - neste site eles ja te diponibilizam um exemplo de dependencia. 
+	  +-->
+	  
+  <dependencies>
+	
+	<!--+
+		| Dependencias Externas
+		+-->
+	
+	<dependency>
+	  <groupId>commons-lang</groupId>
+	  <artifactId>commons-lang</artifactId>
+	  <version>2.1</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.codehaus.plexus</groupId>
+	  <artifactId>plexus-utils</artifactId>
+	  <version>1.1</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>struts</groupId>
+	  <artifactId>struts</artifactId>
+	  <version>1.2.9</version>
+	</dependency>
+	
+	<dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+	  <version>1.2</version>
+	</dependency>
+	
+	<!--dependency>
+	  <groupId>org.apache.struts</groupId>
+	  <artifactId>struts-extras</artifactId>
+	  <version>1.3.10</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.apache.struts</groupId>
+	  <artifactId>struts-tiles</artifactId>
+	  <version>1.3.10</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.apache.struts</groupId>
+	  <artifactId>struts-taglib</artifactId>
+	  <version>1.3.10</version>
+	</dependency-->
+	
+	<dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring</artifactId>
+	  <version>2.0.4</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>com.google.code.gson</groupId>
+	  <artifactId>gson</artifactId>
+	  <version>2.2.2</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.aspectj</groupId>
+	  <artifactId>aspectjweaver</artifactId>
+	  <version>1.6.11</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.aspectj</groupId>
+	  <artifactId>aspectjrt</artifactId>
+	  <version>1.6.11</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>mysql</groupId>
+	  <artifactId>mysql-connector-java</artifactId>
+	  <version>5.1.16</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>commons-logging</groupId>
+	  <artifactId>commons-logging</artifactId>
+	  <version>1.1</version>
+	  <!--exclusions>
+		<exclusion>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</exclusion>
+	  </exclusions-->
+	</dependency>
+	
+	<dependency>
+      <groupId>asm</groupId>
+      <artifactId>asm-all</artifactId>
+      <version>2.2</version>
+	</dependency>
+	<!--+
+		| Dependencias para Teste
+		+-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+		<pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    <finalName>factnet</finalName>
+  </build>
+</project>

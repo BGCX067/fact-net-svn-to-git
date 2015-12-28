@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<import resource="auth/AuthContext.xml"/>
+	<import resource="comercial/ComercialContext.xml"/>
+
+	<!-- ************POOL********************* -->
+	
+	<bean id="db"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/factnet" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+	
+	<!-- ************JDBC TEMPLATE********************* -->
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+		lazy-init="false">
+		<property name="dataSource" ref="db" />
+	</bean>
+	
+	<bean id="loggingClass" class="uninove.factnet.commons.LoggingAspect"/>
+
+	<aop:config>
+		<aop:aspect id="aspecto" ref="loggingClass">
+			<aop:pointcut expression="execution(* uninove.factnet.services..*.*(..))" id="logServices" />
+				<aop:before method="iniciandoSERV" pointcut-ref="logServices" />
+				<aop:after method="finalizando" pointcut-ref="logServices" />
+				<aop:after-returning method="executadoSucessoSERV" returning="r" pointcut-ref="logServices" />
+				<aop:after-throwing method="executadoErroSERV" throwing="e" pointcut-ref="logServices" />
+				
+			<aop:pointcut expression="execution(* uninove.factnet.dao.impl..*.*(..))" id="logDAO"/>
+				<aop:before method="iniciandoDAO" pointcut-ref="logDAO" />
+				<aop:after method="finalizando" pointcut-ref="logDAO" />
+				<aop:after-returning method="executadoSucessoDAO" returning="r" pointcut-ref="logDAO" />
+				<aop:after-throwing method="executadoErroDAO" throwing="e" pointcut-ref="logDAO" />	
+			
+			<!-- aop:pointcut expression="execution(* uninove.factnet.dao.sql..*.*(..))" id="logQuery"/>
+				<aop:after method="finalizando" pointcut-ref="logQuery" />
+				<aop:after-returning method="observarSQL" returning="r" pointcut-ref="logQuery" />
+				<aop:after-throwing method="queryNaoEncontrada" throwing="e" pointcut-ref="logQuery" /-->
+		</aop:aspect>
+	</aop:config>
+	
+	
+</beans>

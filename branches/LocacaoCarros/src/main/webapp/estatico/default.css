@@ -1,0 +1,198 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background: #F5F5F5;
+	color: #333;
+	font: 12px/1.4 Helvetica, Arial, sans-serif;
+}
+
+.btn{
+	border:1px solid #AAA;
+	padding:5px 10px;
+	background:#CCC;
+	background:linear-gradient(to bottom, #BBB 0%,#EEE 100%);	
+	margin:0;
+	font-weight:bold;
+	font-size:12px;
+}
+
+.full {
+	width: 100% !important;	
+}
+
+#title h2{
+	font-size: 2.5em;
+	padding: 0;
+	margin: 10px 5px 0 5px;
+}
+
+#title p {
+	margin: 0;
+	padding: 0 5px;
+}
+
+/* Area Login */
+
+#loginForm {
+	width:300px;
+	padding:10px;	
+	margin:100px auto;
+	border:1px solid #666;
+	border-radius:5px;
+	background:#FFF;
+}
+
+#loginForm .campoLabel{
+	font-weight:bold;
+}
+
+#loginForm .campo{
+	border:1px solid #9F9F9F;
+	padding:3px;
+	width:70%;
+	float:right;
+}
+
+/* Tela principal interna */
+
+#side_menu{
+	width:200px;
+	border-right:1px solid #666;
+	float:left;
+}
+
+#side_menu ul{
+	padding:0;
+}
+
+#side_menu li{
+	padding:10px 2px;
+	list-style:none;
+	border:1px dotted #999;
+	border-bottom:none;
+}
+
+#side_menu h2{
+	padding:0;
+	margin:0;
+}
+
+#side_menu li:last-child{
+	border-bottom:1px dotted #999;
+}
+#side_menu li:hover{
+	background: #EFEFEF;
+}
+
+#side_menu a{
+	color:#333;
+	text-decoration:none;
+}
+
+
+/* Estilos basicos de formularios */
+
+#body_content{
+	float:left;
+	min-width:780px;
+	padding:0 0 0 10px;
+}
+
+.box{
+	background:#CCC;
+	background:	linear-gradient(to bottom, #CCC 0%,#EEE 100%);
+	border:1px solid #999;
+	text-align:left;
+	padding:2px 4px;
+	border-radius:5px 5px 0 0 ;
+}
+.box h2{
+	padding:0;
+	margin:0;
+	font-size:15px;
+}
+
+.box_content{
+	border:1px solid #999;
+	border-top:none;
+	padding:10px;
+	background:#FCFCFC;	
+	border-radius:0 0 5px 5px;
+}
+
+.input_10{
+	width:10%;
+}
+
+.input_20{
+	width:20%;
+}
+
+.input_30{
+	width:30%;
+}
+
+.input_40{
+	width:40%;
+}
+
+.input_50{
+	width:50%;
+}
+
+.input_60{
+	width:60%;
+}
+
+.input_70{
+	width:70%;
+}
+
+.input_80{
+	width:80%;
+}
+
+.input_90{
+	width:90%;
+}
+
+.grid1{
+	float:left;
+	width:100%;	
+}
+
+.grid2{
+	float:left;
+	width:50%;	
+}
+
+.grid2_big{
+	float:left;
+	width:75%;	
+}
+
+.grid3{
+	float:left;
+	width:33.33%;	
+}
+
+.grid4{
+	float:left;
+	width:25%;	
+}
+
+.grid5{
+	float:left;
+	width:20%;	
+}
+
+.grid6{
+	float:left;
+	width:16.66%;	
+}
+
+
+.clear{
+	clear:both;	
+}

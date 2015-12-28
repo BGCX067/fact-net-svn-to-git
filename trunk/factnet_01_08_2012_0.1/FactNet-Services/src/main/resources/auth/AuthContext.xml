@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+		
+		<!-- SQLs para obter queries SQL -->
+	<!-- bean name="acessoSQLFactory" class="uninove.factnet.dao.sql.acesso.AcessoSQL"/ -->
+		
+		<!-- ROW MAPPERS dos DAOS do modulo de autenticação (auth) -->
+		
+	<bean name="pessoaRowMapper" class="uninove.factnet.dao.rowmapper.acesso.PessoaRowMapper"/>
+	<bean name="permissaoRowMapper" class="uninove.factnet.dao.rowmapper.acesso.PermissaoRowMapper"/>
+	
+		<!-- DAOS dos serviços de autenticação (modulo auth) -->
+		
+	<bean name="acessoDAO" class="uninove.factnet.dao.impl.acesso.AcessoDAOImpl" >
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="pessoaRowMapper" ref="pessoaRowMapper"/>
+		<property name="permissaoRowMapper" ref="permissaoRowMapper"/>
+	</bean>
+	
+		<!-- SERVIÇOS do modulo de autenticação (auth) -->
+	
+	<bean name="authServices" class="uninove.factnet.services.impl.auth.AuthBusiness">
+		<property name="acessoDAO" ref="acessoDAO"/>
+	</bean>	
+		
+</beans>

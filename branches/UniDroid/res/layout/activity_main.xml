@@ -1,0 +1,150 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo_principal"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/imgLogoFaculdade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/descLogo"
+        android:src="@drawable/logo_usp" />
+    
+    <TextView
+        android:id="@+id/lblAppTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgLogoFaculdade"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/titulo_app"
+        android:textAppearance="@style/titulo_app" />
+    
+    <TextView
+        android:id="@+id/lblMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblAppTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="msg"
+        android:textAppearance="@style/info_message" />
+    
+    <TextView
+        android:id="@+id/lblMatricula"
+        style="@style/cor_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblMessage"
+        android:layout_toLeftOf="@+id/btnLogin"
+        android:layout_marginTop="25dp"
+        android:text="@string/lblMatricula"
+        android:textSize="18sp" />
+    
+    <EditText
+        android:id="@+id/txtMatricula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblMatricula"
+        android:layout_alignBottom="@+id/lblMatricula"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/lblMatricula"
+        android:ems="10"
+        android:inputType="number" >
+
+        <requestFocus />
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/lblSenha"
+        style="@style/cor_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblMatricula"
+        android:layout_toLeftOf="@+id/btnLogin"
+        android:layout_marginTop="25dp"
+        android:text="@string/lblSenha"
+        android:textSize="18sp" />
+    
+    <EditText
+        android:id="@+id/txtSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblSenha"
+        android:layout_alignBottom="@+id/lblSenha"
+        android:layout_toRightOf="@+id/lblSenha"
+        android:layout_marginLeft="5dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+    
+    <TextView
+        android:id="@+id/lblConfirmaSenha"
+        style="@style/cor_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblSenha"
+        android:layout_toLeftOf="@+id/btnLogin"
+        android:layout_marginTop="25dp"
+        android:text="@string/lblConfirm"
+        android:textSize="18sp" />
+    
+    <EditText
+        android:id="@+id/txtConfirmaSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblConfirmaSenha"
+        android:layout_alignBottom="@+id/lblConfirmaSenha"
+        android:layout_toRightOf="@+id/lblConfirmaSenha"
+        android:layout_marginLeft="5dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+    
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/padrao_botao"
+        android:layout_width="80sp"
+        android:layout_height="40sp"
+        android:layout_alignLeft="@+id/lblAppTitle"
+        android:layout_below="@+id/txtConfirmaSenha"
+        android:layout_marginTop="25dp"
+        android:text="@string/btnTxtLogin" />
+    
+    <Button
+        android:id="@+id/btnCadastrar"
+        style="@style/padrao_botao"
+        android:layout_width="130sp"
+        android:layout_height="40sp"
+        android:layout_alignBaseline="@+id/btnLogin"
+        android:layout_toRightOf="@+id/btnLogin"
+        android:layout_marginLeft="10dp"
+        android:text="@string/btnTxtRegistrar" />
+
+    <TextView
+        android:id="@+id/lblCopyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/company"
+        android:textAppearance="@style/cor_texto" />
+
+    <TextView
+        android:id="@+id/lblDireitos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblCopyright"
+        android:layout_centerHorizontal="true"
+        android:text="@string/texto_direitos"
+        android:layout_marginTop="2dp"
+        android:textAppearance="@style/cor_texto" />
+    
+</RelativeLayout>

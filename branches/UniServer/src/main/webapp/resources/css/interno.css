@@ -1,0 +1,23 @@
+@CHARSET "ISO-8859-1";
+
+
+.label{
+	padding: 10px 5px;
+}
+
+#contentLoginForm{
+	margin-top: -50px;
+	margin-left: -105px;
+	left: 50%;
+	top: 40%;
+	width: 210px;
+	padding: 10px;
+}
+/*
+#loginForm input{
+	float: right;
+}
+
+#loginForm input[type="submit"]{
+	float: none;
+}*/

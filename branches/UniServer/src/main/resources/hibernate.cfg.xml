@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC '-//Hibernate/Hibernate Configuration DTD 3.0//EN'
+'http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd'>
+<hibernate-configuration>
+	<session-factory>
+		<!-- Config de Conexao -->
+		<!-- Config do PostgreSQL 
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/uniServer</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">bigdog</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		-->
+		<!-- Config do MySQL -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/uniServer</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		<!-- Gera o banco de dados automaticamente -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		 
+		<!-- Imprime o SQL na saida (console) -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		
+		<!-- Pool de Conexoes 
+		<property name="hibernate.c3p0.min_size">2</property>
+		<property name="hibernate.c3p0.max_size">5</property>
+		<property name="hibernate.c3p0.timeout">300</property>
+		<property name="hibernate.c3p0.max_statements">50</property>
+		<property name="hibernate.c3p0.idle_test_period">3000</property>
+		-->
+		<mapping class="br.com.bigdogsoftwares.uniserver.model.entidade.curso.Curso"/>
+		<mapping class="br.com.bigdogsoftwares.uniserver.model.entidade.curso.Disciplina"/>
+		<mapping class="br.com.bigdogsoftwares.uniserver.model.entidade.curso.Turma"/>
+		<mapping class="br.com.bigdogsoftwares.uniserver.model.entidade.pessoa.Pessoa" />
+		<mapping class="br.com.bigdogsoftwares.uniserver.model.entidade.pessoa.Aluno" />
+		<mapping class="br.com.bigdogsoftwares.uniserver.model.entidade.pessoa.Professor" />
+		
+		<mapping class="br.com.bigdogsoftwares.uniserver.model.entidade.admin.Adminstrador" />
+		<mapping class="br.com.bigdogsoftwares.uniserver.model.entidade.admin.Permissoes" />
+		
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,133 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+	<groupId>uninove.factnet</groupId>
+	<artifactId>factnet-parent</artifactId>
+	<version>0.1</version>
+  </parent>
+  
+  <artifactId>factnet-web</artifactId>
+  <packaging>war</packaging>
+  
+  <name>FactNet-Web Pos Aula Sistema Web</name>
+  <url>http://maven.apache.org</url>
+  
+  <!--+
+	  | Dependencias devem ser incluidas somente na POM Raiz (da pasta raiz).
+	  +-->
+	  
+  <dependencies>
+	
+	<!--+
+		| Dependencias internas (projetos nossos).
+		+-->
+	<dependency>
+	  <groupId>${project.parent.groupId}</groupId>
+	  <artifactId>factnet-core</artifactId>
+	  <version>${project.parent.version}</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>${project.parent.groupId}</groupId>
+	  <artifactId>factnet-services</artifactId>
+	  <version>${project.parent.version}</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>${project.parent.groupId}</groupId>
+	  <artifactId>factnet-auth</artifactId>
+	  <version>${project.parent.version}</version>
+	</dependency>
+  </dependencies>
+  
+  <build>
+	<plugins>
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>2.0.2</version>
+			<configuration>
+			  <source>1.6</source>
+			  <target>1.6</target>
+			</configuration>
+		</plugin>
+		<plugin>
+			<artifactId>maven-war-plugin</artifactId>
+			<version>2.1.1</version>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-eclipse-plugin</artifactId>
+			<configuration>
+				<wtpapplicationxml>true</wtpapplicationxml>
+				<wtpversion>2.0</wtpversion>
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
+	<!--+
+		| Profiles: NAO MEXER POR FAVOR !!
+		+-->
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<property>
+					<name>enableCiProfile</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>2.0.2</version>
+						<configuration>
+						  <source>1.6</source>
+						  <target>1.6</target>
+						</configuration>
+				    </plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<inherited>false</inherited>
+						<executions>
+							<execution>
+								<id>local.install</id>
+								<phase>install</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<property name="SOURCE_FILE" value="${project.build.directory}\${project.build.finalName}.war" />
+										<property name="TARGET_FILENAME" value="factnet.war" />
+										<delete dir="${CATALINA_HOME}\webapps\factnet" includeemptydirs="true"/>
+										<copy file="${SOURCE_FILE}" tofile="${CATALINA_HOME}\webapps\${TARGET_FILENAME}" />
+										 <!--copy todir="${CATALINA_HOME}\webapps\factnet">
+										 <fileset dir="src\main\webapp">
+										 	<include name="**/*.jsp" /> 
+											<include name="**/*.tld" /> 
+											<include name="**/*.js" /> 
+											<include name="**/*.jpg" /> 
+											<include name="**/*.gif" /> 
+											<include name="**/*.png" /> 
+											<include name="**/*.css" /> 
+											<include name="**/*.xml" /> 
+											<include name="**/*.xsl" /> 
+											<include name="**/*.tag" />
+											<include name="**/*.jasper" />
+											<include name="**/*.ico" />
+										  </fileset>
+										  </copy-->										
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

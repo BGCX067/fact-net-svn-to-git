@@ -1,0 +1,244 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/principal.xhtml">
+    
+    <ui:define name="title">
+    	Minha Conta
+    </ui:define>
+    
+    <ui:define name="head">
+    	<style>
+	    	.coluna{
+	    		font-weight: bold;
+	    		width: 200px;
+	    	}
+	    	
+	    	table{
+	    		margin-left: 50px;
+	    	}
+	    	
+	    	.divisor{
+	    		font-size: 15px;
+	    		padding: 2px;
+	    		margin-left:20px;
+	    	}
+	    	
+	    	p{
+	    		margin-left: 20px;
+	    	}
+	    	
+	    	
+    	</style>
+    </ui:define>
+    
+    <ui:define name="page_title">Informações da sua conta</ui:define>
+    
+    <ui:define name="content">
+    	
+	    	<p>	Abaixo segue as informações sobre sua conta, como identificação, login,etc.<br/>
+	    		Estas informações são confidenciais, e quaisquer alteração é de sua responsabilidade.<br/>
+	    		<hr/>
+	    		<b>OBS: </b>Todos os campos são obrigatorios, os campos deixados vazio não serão atualizados.
+	    	</p>
+	    	<h:form id="formulario">
+				
+	    		<!-- Identificação do Sistema -->
+	    		
+	    		
+	    		<h1 class="ui-widget-header ui-corner-all divisor" style="width: 400px">Identificação do Sistema</h1>
+	    		
+				<h:panelGrid columns="2" cellpadding="5" columnClasses="coluna">
+					<h:outputText value="Login: "/>
+					<p:inplace disabled="true" style="color:#777">
+						<p:inputText value="#{usuario.info.login}"/>
+					</p:inplace>
+					
+					<h:outputText value="Tipo Usuario: " />
+					<p:inplace disabled="true" style="color:#777" >
+						<p:inputText value="#{usuario.info.tipoUsuario}"/>
+					</p:inplace>
+				</h:panelGrid>
+				
+				
+				<!-- Identificacao Usuario -->
+				
+				
+				<h1 class="ui-widget-header ui-corner-all divisor"  style="width: 400px">Identificação de Usuário</h1>
+				
+				<h:panelGrid columns="2" cellpadding="5" columnClasses="coluna">							
+					<h:outputText value="Nome: "/>
+					<p:inplace  editor="true" cancelLabel="Cancelar" saveLabel="Salvar" emptyLabel="N/D">
+						<p:inputText value="#{usuario.info.nome}" id="txtNome">
+							<p:ajax update="formulario" listener="#{usuario.exibeSalvar}" event="change"/>
+						</p:inputText>
+					</p:inplace>
+					
+					<h:outputText value="Sobrenome: "/>
+					<p:inplace editor="true" cancelLabel="Cancelar" saveLabel="Salvar" emptyLabel="N/D">
+						<p:inputText value="#{usuario.info.sobrenome}">
+							<p:ajax update="formulario" listener="#{usuario.exibeSalvar}" event="change"/>
+						</p:inputText>
+					</p:inplace>
+					
+					<h:outputText value="Data de Nascimento: "/>
+					<p:inplace editor="true" cancelLabel="Cancelar" saveLabel="Salvar" emptyLabel="N/D">
+						<p:calendar readonlyInput="true" value="#{usuario.info.dataNasc}"
+									navigator="true" pattern="dd/MM/yyyy" valueChangeListener="#{usuario.exibeSalvar}">
+							<p:ajax update="formulario" listener="#{usuario.exibeSalvar}" event="dateSelect"/>
+						</p:calendar>
+					</p:inplace>
+					
+					<h:outputText value="RG: "/>
+					<p:inplace editor="true" cancelLabel="Cancelar" saveLabel="Salvar" emptyLabel="N/D">
+						<p:inputMask value="#{usuario.info.RG}" mask="99.999.999-9">
+							<p:ajax update="formulario" listener="#{usuario.exibeSalvar}" event="change" />
+						</p:inputMask>
+					</p:inplace>
+					 
+					<h:outputText value="CPF: "/>
+					<p:inplace editor="true" cancelLabel="Cancelar" saveLabel="Salvar" emptyLabel="N/D">
+						<p:inputMask value="#{usuario.info.CPF}" mask="999.999.999-99">
+							<p:ajax update="formulario" listener="#{usuario.exibeSalvar}" event="change" />
+						</p:inputMask>
+					</p:inplace>
+				</h:panelGrid>
+				
+				
+				<!-- Contato -->
+				
+				
+				<h1 class="ui-widget-header ui-corner-all divisor" style="width: 400px">Contato</h1>	
+				
+				<h:panelGrid columns="2" cellpadding="5" columnClasses="coluna">
+					<h:outputText value="E-mail: "/>
+					<p:inplace editor="true" cancelLabel="Cancelar" saveLabel="Salvar" emptyLabel="N/D">
+						<p:inputText value="#{usuario.info.email}">
+							<p:ajax update="formulario" listener="#{usuario.exibeSalvar}" event="change"/>
+						</p:inputText>
+					</p:inplace>
+					
+					<h:outputText value="Telefone: "/>
+					<p:inplace editor="true" cancelLabel="Cancelar" saveLabel="Salvar" emptyLabel="N/D">
+						<p:inputMask value="#{usuario.info.telefone}" mask="(99) 9999-9999" id="telefone">
+							<p:ajax update="formulario" listener="#{usuario.exibeSalvar}" event="change"/>
+						</p:inputMask>
+						<p:tooltip for="telefone" value="Caso o seu numero seja de SP, não é necessario informar o 1º digito (nº 9)"/>
+					</p:inplace>
+				</h:panelGrid>
+				
+				
+				<!-- Seguranca -->
+				
+				
+				<h1 class="ui-widget-header ui-corner-all divisor" style="width: 400px">Segurança</h1>
+				
+				<h:panelGrid columns="2" cellpadding="5" columnClasses="coluna">
+					<h:outputText value="#{usuario.info.perguntaSecreta}"/>
+					<p:commandButton value="Alterar Resposta" onclick="alterarPergunta.show()"/>
+					
+					<h:outputText value="Senha: "/>
+					<p:commandButton value="Alterar Senha"  onclick="alterarSenha.show()"/>
+					
+				</h:panelGrid>
+			
+			<p:separator  style="width:auto;height:3px" />
+			
+			
+			<!-- Botoes do Formulario -->
+			
+			
+			<p:commandButton id="salvar" icon="ui-icon ui-icon-disk" widgetVar="btnSalvar" 
+							 onclick="confirmacaoAlteracao.show()" value="Salvar Todas Alterações" 
+							 style="margin:10px 50px" disabled="#{not usuario.exibeMenu}"/>
+							 
+   			<p:button icon="ui-icon ui-icon-disk" value="Descartar Tudo" href="../" 
+					style="margin:10px 0"/>
+			
+			<!-- Confirmação das alterações -->
+			
+			<p:confirmDialog appendToBody="true" closable="false" severity="alert" 
+							 header="Efetivação das Alterações"
+							 message="Você está prestes a alterar suas informações, está certo disso ?"
+							 widgetVar="confirmacaoAlteracao" id="dialogConfirmacao">
+				<p:commandButton value="Sim" update="message, salvar" actionListener="#{usuario.atualizarDados}" oncomplete="confirmacaoAlteracao.hide()"/>
+				<p:commandButton value="Não" onclick="confirmacaoAlteracao.hide()"/>
+			</p:confirmDialog>
+
+			<p:growl id="message" showDetail="true"/>
+			
+		</h:form>	
+		
+		
+			
+			<!-- Modais da tela -->
+					
+			<!-- 
+				Modal de Alteracao de Senha
+			 -->
+			<p:dialog widgetVar="alterarSenha" resizable="false" onHide="btnSalvar.enable()"
+					  modal="true" appendToBody="true" header="Alteração de Senhas" 
+					  footer="OBS: Pressione 'Salvar Alterações' para efetivar a atualização.">
+				<h:form id="formSenha">
+					<p:growl id="senha_message" showDetail="true"/>
+					<h:panelGrid columns="2" cellpadding="2"  columnClasses="coluna" style="margin:0px;padding:0px;">
+						<h:outputLabel value="Antiga Senha: "/>
+						<p:password value="#{usuario.info.oldPassword}" required="true" requiredMessage="Campo 'Senha' não pode ser nulo"/>
+						
+						<h:outputLabel value="Nova Senha: "/> 
+						<p:password value="#{usuario.info.newPassword}" feedback="true" 
+									required="true" requiredMessage="Campo 'Nova Senha' não pode ser nulo"
+									goodLabel="Senha Média" promptLabel="Entre com a senha" strongLabel="Senha Forte" weakLabel="Senha Fraca"/>
+						
+						<h:outputLabel value="Confirmação Senha: "/> 
+						<p:password value="#{usuario.info.confirmNewPassword}" id="confirmacao" 
+									requiredMessage="Campo 'Confirmação' não pode ser nulo" required="true"/>
+						<p:tooltip for="confirmacao" value="Redigite sua nova senha."/>
+						
+					</h:panelGrid>
+					<p:commandButton value="Guardar" style="margin-left:80px" update="senha_message,formSenha" 
+									 actionListener="#{usuario.atualizarSenha}" oncomplete="alterarSenha.hide();"/>
+					<p:spacer width="50" height="30"/>
+					<p:commandButton value="Cancelar" type="submit" onclick="alterarSenha.hide()"/>
+				</h:form>
+			</p:dialog>
+			
+			<!-- 
+				Modal de Alteracao de pergunta
+			 -->
+			
+			<p:dialog widgetVar="alterarPergunta" resizable="false" onHide="btnSalvar.enable()"
+					  modal="true" appendToBody="true" header="Alteração da Pergunta Secreta"
+					  footer="OBS: Pressione 'Salvar Todas Alterações' para efetivar a atualização.">
+					 <h:form id="formPergunta">
+						 <p:growl id="pergunta_message" showDetail="true"/>
+						 
+						 <h:panelGrid columns="2" columnClasses="coluna" style="border:none;margin:0px;">
+						 	<p:outputLabel value="Pergunta Secreta: "/>
+						 	<p:selectOneMenu value="#{usuario.info.newPerguntaSecreta}">
+						 		<f:selectItem itemLabel="Selecione um item" itemValue=""/>
+						 		<f:selectItem itemLabel="Qual o nome da sua mãe ?" itemValue="Qual o nome da sua mãe ?"/>
+						 		<f:selectItem itemLabel="Qual a data de nascimento do seu cachorro ?" itemValue="Qual a data de nascimento do seu cachorro ?"/>
+						 		<f:selectItem itemLabel="Qual o nome do seu melhor amigo ?" itemValue="Qual o nome do seu melhor amigo ?"/>
+						 		<f:selectItem itemLabel="Qual sua musica favorita ?" itemValue="Qual sua musica favorita ?"/>
+						 	</p:selectOneMenu>
+						 	
+						 	<p:outputLabel value="Resposta Secreta: "/>
+						 	<p:inputText value="#{usuario.info.newRespostaSecreta}"/>
+						 	
+						 	<p:outputLabel value="Senha: "/>
+						 	<p:password value="#{usuario.info.oldPassword}"/>
+						 	
+						 </h:panelGrid> 
+						 <p:commandButton value="Guardar" actionListener="#{usuario.atualizarPergunta}" 
+						 				  update="pergunta_message, formPergunta" oncomplete="alterarPergunta.hide()"/>
+						 <p:spacer width="20px" height="30px"/>
+						 <p:commandButton value="Cancelar" onclick="alterarPergunta.hide();" />
+					</h:form>
+			</p:dialog>
+		
+    </ui:define>
+    
+</ui:composition>

@@ -1,0 +1,31 @@
+
+body{
+		font-size: 12px;
+	}
+	
+#title{
+		font-size: 35px;
+	}
+
+#menu .ui-dashboard-column{
+		width: auto;
+		height: auto;
+	}
+
+#contaPanel, #menuPanel {
+	border:none;	
+}
+
+#contaPanel_content, #menuPanel_content{
+	padding: 0px;	
+}
+
+.title{
+		font-size: 16px;
+		padding: 10px;
+		margin-top:-2px;
+	}
+
+.ui-layout-resizer-west-closed{
+	border:none;
+}

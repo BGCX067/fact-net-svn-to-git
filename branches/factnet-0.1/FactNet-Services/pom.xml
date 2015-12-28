@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+	<groupId>uninove.factnet</groupId>
+	<artifactId>factnet-parent</artifactId>
+	<version>0.1</version>
+  </parent>
+ 
+  <artifactId>factnet-services</artifactId>
+  <packaging>jar</packaging>
+
+  <name>FactNet-Services Pos Aula Servicos</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+   <!--+
+	  | Dependências devem ser incluidas somente na POM Raiz (da pasta raiz).
+	  +-->
+	  
+  <dependencies>
+	
+	<dependency>
+	  <groupId>${project.parent.groupId}</groupId>
+	  <artifactId>factnet-core</artifactId>
+	  <version>${project.parent.version}</version>
+	</dependency>
+  </dependencies>
+  
+	<!--+
+		| Profiles: NÃO MEXER POR FAVOR !!
+		+-->
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<property>
+					<name>enableCiProfile</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>2.0.2</version>
+						<configuration>
+						  <source>1.6</source>
+						  <target>1.6</target>
+						</configuration>
+				   </plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<inherited>false</inherited>
+						<executions>
+							<execution>
+								<id>local.install</id>
+								<phase>install</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<property name="SOURCE_FILE" value="${project.build.directory}\${project.build.finalName}.jar" />
+										<property name="TARGET_FILENAME" value="${project.artifactId}-client.jar" />
+										<copy file="${SOURCE_FILE}" tofile="${CATALINA_HOME}\shared\lib\${TARGET_FILENAME}" />
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

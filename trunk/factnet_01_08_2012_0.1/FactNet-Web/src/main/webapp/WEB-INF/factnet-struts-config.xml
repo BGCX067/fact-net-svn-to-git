@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+             "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+             "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<display-name>Sistema CMS FactNet</display-name>
+	
+	<!-- Beans do Struts (FORM's)--> 
+	<form-beans>
+		<form-bean name="cadastroCliente" type="uninove.factnet.comercial.rh.form.CadastroClienteForm"/>
+	</form-beans>
+	
+	<!-- Encaminhamentos Globais -->
+	<global-forwards>
+			<forward name="comercial" path="/index.jsp"/>
+	</global-forwards>
+	
+	<!-- Mapeamentos de acoes (Servicos disponiveis no sistema) -->
+	<action-mappings>
+		<action path="/index" 
+				type="org.apache.struts.actions.ForwardAction" 
+				parameter="layoutBase"/>
+		
+		<action path="/cadastro" parameter="acao" validate="false" name="cadastroCliente"
+				scope="request" type="uninove.factnet.comercial.rh.action.CadastroClienteAction">
+			<forward name="existente" path="/WEB-INF/pages/popup/avisos/ja_logado.jsp"/>
+			<forward name="iniciar" path="/WEB-INF/pages/popup/cadastro/iniciar_cadastro.jsp"/>		
+		</action>
+	</action-mappings>
+	
+	<!-- Arquivo de mensagens do sistema -->
+	<message-resources parameter="/WEB-INF/resources.properties"/>
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="moduleAware" value="true" />
+	</plug-in>
+</struts-config>

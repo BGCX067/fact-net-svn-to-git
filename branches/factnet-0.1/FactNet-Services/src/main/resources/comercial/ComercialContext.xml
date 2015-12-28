@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+
+<!-- DAOS dos serviços de autenticação (modulo auth) -->
+		
+	<bean name="cadastroDAO" class="uninove.factnet.dao.impl.comercial.rh.CadastroClienteDAOImpl" >
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="pessoaRowMapper" ref="pessoaRowMapper"/>
+	</bean>
+	
+		<!-- SERVIÇOS do modulo de autenticação (auth) -->
+	
+	<bean name="cadastroServices" class="uninove.factnet.services.impl.comercial.rh.CadastroClienteBusiness">
+		<property name="cadastroDAO" ref="cadastroDAO"/>
+	</bean>	
+
+</beans>

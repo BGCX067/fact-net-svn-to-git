@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<f:view contentType="text/html">
+		
+		<h:head>
+			<f:facet name="first">
+				<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+				<title>Geek-Admin: <ui:insert name="title"/></title>
+			</f:facet>
+			
+			<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/principal.css" />
+			<style>
+				.ui-layout-unit-content{
+					background: none;
+				}
+				/*
+				.ui-layout-unit .ui-layout-unit-content{
+					overflow: hidden;
+				}
+				*/
+				
+				
+			</style>
+			<ui:insert name="head"></ui:insert>
+			
+		</h:head>
+		
+		<h:body>
+			<p:layout id="fullPage-layout" fullPage="true">
+				<p:layoutUnit position="north"
+							 minSize="50" size="113" 
+							 style="overflow:hidden"
+							 styleClass="ui-widget ui-widget-header no-scroll">
+					
+					<div id="header" style="padding:5px">
+						<img src="#{request.contextPath}/images/logo.png" style="float:left;position:absolute; left:-5px; top:0"/>
+						<h1 align="center" id="title">Geek Administrator</h1>
+					</div>
+					
+				</p:layoutUnit>
+				
+				<p:layoutUnit position="center" style="border:none;background:none;">
+					<h1 class="title ui-widget-header ui-corner-all"><ui:insert name="page_title"></ui:insert></h1>
+					<ui:insert name="content"></ui:insert>
+				</p:layoutUnit>
+				<p:layoutUnit position="west" header="Painel"
+							  collapsible="true" resizable="true" 
+							  size="200" minSize="100" maxSize="250"
+							  styleClass="ui-widget-content ui-corner-bottom ui-helper-clearfix ui-shadow no-scroll"
+							  style="border-left:none" effect="fade" effectSpeed="10">
+					<h:form>
+						 <p:menu style="width:auto">  
+						 	<p:menuitem value="Home" icon="ui-icon ui-icon-home" url="/"/>
+					 		<p:menuitem value="Minha Conta" icon="ui-icon ui-icon-person" url="/conta"/>
+					 		<p:menuitem value="Sair" icon="ui-icon ui-icon-cancel" />
+						 	
+					        <p:submenu label="Usuarios">  
+					            <p:menuitem value="Cadastrar Usuario"  icon="ui-icon-disk" url="/usuarios/cadastro.jsf"/>  
+					            <p:menuitem value="Listar" icon="ui-icon-arrowrefresh-1-w" url="/usuarios/buscar.jsf" />  
+					        </p:submenu>  
+					        <p:submenu label="Paginas" icon="ui-icon-newwin">  
+					            <p:menuitem value="Criar Pagina" icon="ui-icon-newwin" url="/pagina/novo.jsf"/>
+					            <p:menuitem value="Listar" icon="ui-icon-arrowrefresh-1-e" url="/pagina/listar.jsf"/>  
+					        </p:submenu>  
+					        <p:submenu label="Opções" icon="ui-icon-extlink">  
+					                <p:menuitem value="Ajuda" icon="ui-icon-help" />  
+					                <p:menuitem value="Configurações" icon="ui-icon-wrench" />  
+					        </p:submenu>  
+					    </p:menu> 
+				    </h:form>
+				</p:layoutUnit>
+				<p:layoutUnit position="south"
+							  styleClass="ui-widget ui-widget-header ui-corner-all no-scroll"
+							  size="60" style="text-align:center;">
+					<span style="font-size: 10px;font-style: normal;font-weight: normal;">Sistema Adminstrativo - Geek Admin &copy;</span> 
+					<p:commandButton style="float:right" onclick="notificationBar.show()" icon="ui-icon ui-icon-comment" title="Relatar Bugs" /> <br/>
+					<span style="font-size: 10px;font-style: normal;font-weight: normal;">Desenvolvido por <a href="http://geeksistemas.com" class="link_geek_sistemas">Geek Sistemas</a> &reg;</span><br/>
+					<span style="font-size: 10px;font-style: normal;font-weight: normal;">Av. Endereço da Empresa, 1234 - São Paulo, SP</span>
+				</p:layoutUnit>
+			</p:layout>
+		</h:body>
+	</f:view>
+</html>

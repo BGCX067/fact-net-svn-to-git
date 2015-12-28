@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="formSenha">
+					<p:growl id="senha_message" showDetail="true"/>
+					<h:panelGrid columns="2" cellpadding="2"  columnClasses="coluna" style="margin:0px;padding:0px;">
+						<h:outputLabel value="Antiga Senha: "/>
+						<p:password value="#{usuario.info.oldPassword}" required="true" requiredMessage="Campo 'Senha' não pode ser nulo"/>
+						
+						<h:outputLabel value="Nova Senha: "/> 
+						<p:password value="#{usuario.info.newPassword}" feedback="true" 
+									required="true" requiredMessage="Campo 'Nova Senha' não pode ser nulo"
+									goodLabel="Senha Média" promptLabel="Entre com a senha" strongLabel="Senha Forte" weakLabel="Senha Fraca"/>
+						
+						<h:outputLabel value="Confirmação Senha: "/> 
+						<p:password value="#{usuario.info.confirmNewPassword}" id="confirmacao" requiredMessage="Campo 'Confirmação' não pode ser nulo" required="true"/>
+						<p:tooltip for="confirmacao" value="Redigite sua nova senha."/>
+						
+					</h:panelGrid>
+					<p:commandButton value="Guardar" style="margin-left:80px" update="senha_message,formSenha" actionListener="#{usuario.atualizarSenha}"/>
+					<p:spacer width="50" height="30"/>
+					<p:commandButton value="Cancelar" type="submit"/>
+				</h:form>
+</h:body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+             "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+             "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<display-name>Sistema UniServer</display-name>
+	
+	<!-- Beans do Struts (FORM's)--> 
+	<form-beans>
+		<form-bean name="loginForm" type="br.com.bigdogsoftwares.uniserver.controller.form.LoginForm"/>
+		<form-bean name="pessoaForm" type="br.com.bigdogsoftwares.uniserver.admin.form.PessoaForm"/>
+		<form-bean name="cursoForm" type="br.com.bigdogsoftwares.uniserver.admin.form.CursoForm"/>
+		<form-bean name="professorForm" type="br.com.bigdogsoftwares.uniserver.admin.form.ProfessorForm"/>
+		<form-bean name="turmaForm" type="br.com.bigdogsoftwares.uniserver.admin.form.TurmaForm"/>
+		<form-bean name="disciplinaForm" type="br.com.bigdogsoftwares.uniserver.admin.form.DisciplinaForm"/>
+	</form-beans>
+	
+	<global-forwards>
+	    <forward name="deslogado" path="/index.jsp"/>
+	    <forward name="logado" path="/WEB-INF/pages/index.jsp"/>
+	</global-forwards>
+	
+	<!-- Mapeamentos de acoes (Servicos disponiveis no sistema) -->
+	<action-mappings>
+		<action path="/login"
+				name="loginForm"
+				scope="request"
+				parameter="acao"
+				type="br.com.bigdogsoftwares.uniserver.controller.action.LoginAction">
+		</action>
+		
+		<action path="/admin/login"
+				name="pessoaForm"
+				scope="request"
+				parameter="acao"
+				type="br.com.bigdogsoftwares.uniserver.admin.action.LoginAction">
+		</action>
+		
+		<action path="/admin/curso"
+				name="cursoForm"
+				scope="request"
+				parameter="acao"
+				type="br.com.bigdogsoftwares.uniserver.admin.action.CadastroAction">
+				<forward name="body_curso" path="/WEB-INF/pages/curso_body.jsp"/>
+		</action>
+		
+		<action path="/admin/professor"
+				name="professorForm"
+				scope="request"
+				parameter="acao"
+				type="br.com.bigdogsoftwares.uniserver.admin.action.CadastroAction">
+				<forward name="body_professor" path="/WEB-INF/pages/professor_body.jsp"/>
+		</action>
+		
+		<action path="/admin/turma"
+				name="turmaForm"
+				scope="request"
+				parameter="acao"
+				type="br.com.bigdogsoftwares.uniserver.admin.action.CadastroAction">
+				<forward name="body_turma" path="/WEB-INF/pages/turma_body.jsp"/>
+		</action>
+		
+		<action path="/admin/disciplina"
+				name="disciplinaForm"
+				scope="request"
+				parameter="acao"
+				type="br.com.bigdogsoftwares.uniserver.admin.action.CadastroAction">
+				<forward name="body_disciplina" path="/WEB-INF/pages/disciplina_body.jsp"/>
+		</action>
+	</action-mappings>
+	
+</struts-config>
